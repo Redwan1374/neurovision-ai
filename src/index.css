@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-nv-bg: #080B16;
+  --color-nv-surface: #101629;
+  --color-nv-card: #141C31;
+  --color-nv-purple: #8B5CF6;
+  --color-nv-violet: #A855F7;
+  --color-nv-cyan: #22D3EE;
+  --color-nv-blue: #3B82F6;
+  --color-nv-text: #F8FAFC;
+  --color-nv-muted: #94A3B8;
+}
+
+@layer base {
+  html {
+    background-color: #080B16;
+    color: #F8FAFC;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Subtle custom scrollbars for dark research workspace */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080B16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Custom range slider for radiological windowing and Grad-CAM opacity */
+input[type="range"].nv-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"].nv-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+input[type="range"].nv-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #8B5CF6, #22D3EE);
+  border: 2px solid #F8FAFC;
+  margin-top: -5px;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.55);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].nv-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.nv-gradient-btn {
+  background: linear-gradient(110deg, #8B5CF6 0%, #3B82F6 50%, #22D3EE 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.nv-gradient-btn:hover {
+  box-shadow: 0 0 28px rgba(139, 92, 246, 0.4), 0 0 12px rgba(34, 211, 238, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nv-gradient-btn {
+    animation: none;
+  }
+}

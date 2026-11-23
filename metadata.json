@@ -1,0 +1,6 @@
+{
+  "name": "NeuroVision AI",
+  "description": "See Beyond the Scan. Understand the Brain. An AI-powered Brain MRI Analysis & Research Platform featuring multi-model classification, probability distribution, Grad-CAM explainability visualization, and research analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
